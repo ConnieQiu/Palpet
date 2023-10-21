@@ -18,7 +18,7 @@ class MainScreenViewController: UIViewController {
     
     func setUpUI(){
        
-        let customColor = UIColor(red: 218.0 / 255.0, green: 191.0 / 255.0 , blue: 215.0 / 255.0 , alpha: 1.0)
+        let customColor = UIColor(red: 248 / 255, green: 200 / 255 , blue: 220 / 255, alpha: 1.0)
         if let tabBar = self.tabBarController?.tabBar{
            tabBar.backgroundColor = customColor
         }
