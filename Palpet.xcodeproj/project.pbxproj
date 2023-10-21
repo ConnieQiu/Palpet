@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A935DB252AE3794F007044C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB242AE3794F007044C5 /* AppDelegate.swift */; };
 		A935DB272AE3794F007044C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB262AE3794F007044C5 /* SceneDelegate.swift */; };
-		A935DB292AE3794F007044C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB282AE3794F007044C5 /* ViewController.swift */; };
+		A935DB292AE3794F007044C5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB282AE3794F007044C5 /* MainScreenViewController.swift */; };
 		A935DB2C2AE3794F007044C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A935DB2A2AE3794F007044C5 /* Main.storyboard */; };
 		A935DB2F2AE3794F007044C5 /* Palpet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A935DB2D2AE3794F007044C5 /* Palpet.xcdatamodeld */; };
 		A935DB312AE37951007044C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A935DB302AE37951007044C5 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 		A935DB212AE3794F007044C5 /* Palpet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palpet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A935DB242AE3794F007044C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A935DB262AE3794F007044C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A935DB282AE3794F007044C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A935DB282AE3794F007044C5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		A935DB2B2AE3794F007044C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A935DB2E2AE3794F007044C5 /* Palpet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Palpet.xcdatamodel; sourceTree = "<group>"; };
 		A935DB302AE37951007044C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 			children = (
 				A935DB242AE3794F007044C5 /* AppDelegate.swift */,
 				A935DB262AE3794F007044C5 /* SceneDelegate.swift */,
-				A935DB282AE3794F007044C5 /* ViewController.swift */,
+				A935DB282AE3794F007044C5 /* MainScreenViewController.swift */,
 				A935DB2A2AE3794F007044C5 /* Main.storyboard */,
 				A935DB302AE37951007044C5 /* Assets.xcassets */,
 				A935DB322AE37951007044C5 /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A935DB292AE3794F007044C5 /* ViewController.swift in Sources */,
+				A935DB292AE3794F007044C5 /* MainScreenViewController.swift in Sources */,
 				A935DB2F2AE3794F007044C5 /* Palpet.xcdatamodeld in Sources */,
 				A935DB252AE3794F007044C5 /* AppDelegate.swift in Sources */,
 				A935DB272AE3794F007044C5 /* SceneDelegate.swift in Sources */,
