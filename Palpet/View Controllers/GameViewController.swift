@@ -13,7 +13,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let lightPeachColor = 
+        let lightPeachColor = UIColor(red: 255 / 255, green: 184 / 255 , blue: 201 / 255, alpha: 1.0)
+        self.view.backgroundColor = lightPeachColor
     }
     
 
