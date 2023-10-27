@@ -13,7 +13,7 @@ class FoodItemCell: UICollectionViewCell{
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var itemGoldCost: UILabel!
     
-    public func configure(with model: FoodItem){
+    func configure(with model: FoodItem){
         cellImage.image = model.image
         itemGoldCost.text = model.goldCost
     }

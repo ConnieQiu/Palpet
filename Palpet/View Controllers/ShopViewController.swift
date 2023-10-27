@@ -11,7 +11,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var foodImage: UIImageView!
     
     var items: [FoodItem] = []
     //still need to increment every time pet is fed
@@ -28,7 +27,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         let apple = FoodItem(image: itemImage, goldCost: "100g")
-        let orange = FoodItem(image: itemImage, goldCost: "200g")
+        let orange = FoodItem(image: itemImage, goldCost: "250g")
         let pear = FoodItem(image: itemImage, goldCost: "300g")
 
         

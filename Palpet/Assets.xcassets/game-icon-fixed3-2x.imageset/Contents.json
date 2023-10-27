@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "game-icon-fixed2.png",
+      "filename" : "game-icon-fixed3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "game-icon-fixed2 1.png",
+      "filename" : "game-icon-fixed3-2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "game-icon-fixed2 2.png",
+      "filename" : "game-icon-fixed3-3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
