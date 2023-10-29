@@ -18,6 +18,11 @@
 		A935DB412AE47EC3007044C5 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB402AE47EC3007044C5 /* FoodItem.swift */; };
 		A935DB442AE482A0007044C5 /* FoodItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB432AE482A0007044C5 /* FoodItemCollectionCell.swift */; };
 		A935DB4A2AE48952007044C5 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB492AE48952007044C5 /* ShopViewController.swift */; };
+		A935DB4C2AEC64F7007044C5 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB4B2AEC64F7007044C5 /* WeatherAPI.swift */; };
+		A935DB4E2AEC6B39007044C5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB4D2AEC6B39007044C5 /* WeatherViewController.swift */; };
+		A935DB522AEDADFC007044C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB512AEDADFC007044C5 /* TabBarViewController.swift */; };
+		A935DB542AEDE583007044C5 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB532AEDE583007044C5 /* Pet.swift */; };
+		A935DB562AEDE8C2007044C5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB552AEDE8C2007044C5 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		A935DB402AE47EC3007044C5 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		A935DB432AE482A0007044C5 /* FoodItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemCollectionCell.swift; sourceTree = "<group>"; };
 		A935DB492AE48952007044C5 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		A935DB4B2AEC64F7007044C5 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		A935DB4D2AEC6B39007044C5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		A935DB512AEDADFC007044C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A935DB532AEDE583007044C5 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		A935DB552AEDE8C2007044C5 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +60,7 @@
 		A935DB182AE3794F007044C5 = {
 			isa = PBXGroup;
 			children = (
+				A935DB512AEDADFC007044C5 /* TabBarViewController.swift */,
 				A935DB232AE3794F007044C5 /* Palpet */,
 				A935DB222AE3794F007044C5 /* Products */,
 			);
@@ -66,6 +77,7 @@
 		A935DB232AE3794F007044C5 /* Palpet */ = {
 			isa = PBXGroup;
 			children = (
+				A935DB4B2AEC64F7007044C5 /* WeatherAPI.swift */,
 				A935DB242AE3794F007044C5 /* AppDelegate.swift */,
 				A935DB262AE3794F007044C5 /* SceneDelegate.swift */,
 				A935DB422AE47F18007044C5 /* Data Models */,
@@ -82,8 +94,9 @@
 		A935DB3F2AE461AA007044C5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A935DB492AE48952007044C5 /* ShopViewController.swift */,
 				A935DB282AE3794F007044C5 /* MainScreenViewController.swift */,
+				A935DB4D2AEC6B39007044C5 /* WeatherViewController.swift */,
+				A935DB492AE48952007044C5 /* ShopViewController.swift */,
 				A935DB3D2AE46129007044C5 /* GameViewController.swift */,
 			);
 			path = "View Controllers";
@@ -92,6 +105,8 @@
 		A935DB422AE47F18007044C5 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				A935DB552AEDE8C2007044C5 /* Player.swift */,
+				A935DB532AEDE583007044C5 /* Pet.swift */,
 				A935DB432AE482A0007044C5 /* FoodItemCollectionCell.swift */,
 				A935DB402AE47EC3007044C5 /* FoodItem.swift */,
 			);
@@ -169,12 +184,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A935DB4C2AEC64F7007044C5 /* WeatherAPI.swift in Sources */,
+				A935DB4E2AEC6B39007044C5 /* WeatherViewController.swift in Sources */,
+				A935DB522AEDADFC007044C5 /* TabBarViewController.swift in Sources */,
 				A935DB3E2AE46129007044C5 /* GameViewController.swift in Sources */,
 				A935DB292AE3794F007044C5 /* MainScreenViewController.swift in Sources */,
+				A935DB562AEDE8C2007044C5 /* Player.swift in Sources */,
 				A935DB2F2AE3794F007044C5 /* Palpet.xcdatamodeld in Sources */,
 				A935DB252AE3794F007044C5 /* AppDelegate.swift in Sources */,
 				A935DB4A2AE48952007044C5 /* ShopViewController.swift in Sources */,
 				A935DB412AE47EC3007044C5 /* FoodItem.swift in Sources */,
+				A935DB542AEDE583007044C5 /* Pet.swift in Sources */,
 				A935DB272AE3794F007044C5 /* SceneDelegate.swift in Sources */,
 				A935DB442AE482A0007044C5 /* FoodItemCollectionCell.swift in Sources */,
 			);

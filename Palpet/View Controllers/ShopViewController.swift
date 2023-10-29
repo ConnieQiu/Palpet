@@ -12,9 +12,15 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var playerGoldAmount: UILabel!
+    
     var items: [FoodItem] = []
     //still need to increment every time pet is fed
     var timesFed = 0
+    
+    var isFirstLoad = true
+    
+    var myPlayer: Player!
     
     
     override func viewDidLoad() {
@@ -26,9 +32,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             abort()
         }
         
-        let apple = FoodItem(image: itemImage, goldCost: "100g")
-        let orange = FoodItem(image: itemImage, goldCost: "250g")
-        let pear = FoodItem(image: itemImage, goldCost: "300g")
+        let apple = FoodItem(image: itemImage, goldCost: "100g", hungerValue: 20)
+        let orange = FoodItem(image: itemImage, goldCost: "250g", hungerValue: 40)
+        let pear = FoodItem(image: itemImage, goldCost: "300g", hungerValue: 60)
 
         
         print("Hello")
@@ -41,6 +47,16 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        if isFirstLoad == true{
+            myPlayer = Player()
+            isFirstLoad = false
+            print("playerGold " + String(myPlayer.gold) )
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        playerGoldAmount.text = String(myPlayer.gold)
     }
     
     //Add more items after a certain amount of feeds.
@@ -49,7 +65,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             print("No image")
             abort()
         }
-        let dragonfruit = FoodItem(image: itemImage, goldCost: "500g")
+        let dragonfruit = FoodItem(image: itemImage, goldCost: "500g", hungerValue: 80)
         items.append(dragonfruit)
         
     }
