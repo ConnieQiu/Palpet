@@ -12,6 +12,12 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
     @IBOutlet weak var rainyBackground: UIImageView!
     @IBOutlet weak var cloudyBackground: UIImageView!
     @IBOutlet weak var clearBackground: UIImageView!
+    @IBOutlet weak var fullHealthBar: UIImageView!
+    @IBOutlet weak var eightyHealthBar: UIImageView!
+    @IBOutlet weak var sixtyHealthBar: UIImageView!
+    @IBOutlet weak var fourtyHealthBar: UIImageView!
+    @IBOutlet weak var twentyHealthBar: UIImageView!
+    @IBOutlet weak var zeroHealthBar: UIImageView!
     
     /*var weather: String? {
         didSet{
@@ -47,9 +53,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
         }
         
     }
-    
 
-        
     
     // MARK: - Weather Method
     
@@ -102,6 +106,30 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
             self.myPet.hunger -= 20
             //update health bar beloe here
             print("Pet hunger: " + String(self.myPet.hunger))
+            self.fullHealthBar.isHidden = true
+            self.eightyHealthBar.isHidden = true
+            self.sixtyHealthBar.isHidden = true
+            self.fourtyHealthBar.isHidden = true
+            self.twentyHealthBar.isHidden = true
+            self.zeroHealthBar.isHidden = true
+            
+            switch self.myPet.hunger{
+                case 100:
+                    self.fullHealthBar.isHidden = false
+                case 80:
+                    self.eightyHealthBar.isHidden = false
+                case 60:
+                    self.sixtyHealthBar.isHidden = false
+                case 40:
+                    self.fourtyHealthBar.isHidden = false
+                case 20:
+                    self.twentyHealthBar.isHidden = false
+                case 0:
+                    self.zeroHealthBar.isHidden = false
+                default:
+                    self.fullHealthBar.isHidden = false
+            }
+            
             if self.myPet.hunger == 0 {
                 timer.invalidate()
             }

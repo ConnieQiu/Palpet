@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "healthbar real.png",
+      "filename" : "80 health bar.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "healthbar real 1.png",
+      "filename" : "80 health bar 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "healthbar real 2.png",
+      "filename" : "80 health bar 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

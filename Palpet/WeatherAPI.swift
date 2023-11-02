@@ -30,8 +30,8 @@ struct OpenWeatherAPI{
             throw OpenWeatherAPIError.requestFailed(message: "Response is not HTTPURLResponse.")
         }
 
-        guard 200...299 ~= response.statusCode else {
-            throw OpenWeatherAPIError.requestFailed(message: "Invalid city name") //"Status Code should be 2xx, but is \(response.statusCode).")
+        guard 404 ~= response.statusCode else {
+            throw OpenWeatherAPIError.requestFailed(message: "Invalid city name")
         }
         
         let weather = try JSONDecoder().decode(WeatherResponse.self, from: data)

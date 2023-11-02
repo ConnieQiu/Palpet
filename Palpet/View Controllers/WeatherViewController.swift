@@ -57,7 +57,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
                         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alertController.addAction(action)
                         self.present(alertController, animated: true)
-                        //notify delegate
+                        //send data
                         sendDataToMainView(weather: weatherType)
                     }
                     textField.text = ""
