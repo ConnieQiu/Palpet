@@ -11,11 +11,11 @@ import UIKit
 class FoodItem{
     let image: UIImage
     let goldCost: String
-    let restoreHungerValue: Int
+    let hungerRestoreValue: String
     
-    init(image: UIImage, goldCost: String, hungerValue: Int){
+    init(image: UIImage, goldCost: String, hungerValue: String){
         self.image = image
         self.goldCost = goldCost
-        self.restoreHungerValue = hungerValue
+        self.hungerRestoreValue = hungerValue
     }
 }

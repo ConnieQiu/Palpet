@@ -12,10 +12,12 @@ class FoodItemCell: UICollectionViewCell{
     
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var itemGoldCost: UILabel!
+    @IBOutlet weak var restoreHungerValue: UILabel!
     
     func configure(with model: FoodItem){
         cellImage.image = model.image
         itemGoldCost.text = model.goldCost
+        restoreHungerValue.text = model.hungerRestoreValue
     }
     
     

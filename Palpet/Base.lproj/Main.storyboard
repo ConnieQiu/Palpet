@@ -269,13 +269,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9k-Dz-x07">
+                                                    <rect key="frame" x="54" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="yV3-fq-jUg" secondAttribute="trailing" constant="40" id="FnB-ym-uK8"/>
                                                 <constraint firstItem="xN2-rx-PBi" firstAttribute="leading" secondItem="zJX-q3-alf" secondAttribute="leading" constant="14" id="OR4-0d-3dv"/>
                                                 <constraint firstItem="yV3-fq-jUg" firstAttribute="leading" secondItem="zJX-q3-alf" secondAttribute="leading" constant="57" id="URh-7n-owY"/>
                                                 <constraint firstItem="yV3-fq-jUg" firstAttribute="top" secondItem="xN2-rx-PBi" secondAttribute="bottom" constant="7" id="iOH-nt-U1t"/>
+                                                <constraint firstItem="S9k-Dz-x07" firstAttribute="top" secondItem="zJX-q3-alf" secondAttribute="top" constant="8" id="jCD-pR-Ls8"/>
+                                                <constraint firstItem="S9k-Dz-x07" firstAttribute="leading" secondItem="zJX-q3-alf" secondAttribute="leading" constant="54" id="moU-z8-x82"/>
                                                 <constraint firstAttribute="trailing" secondItem="xN2-rx-PBi" secondAttribute="trailing" constant="14" id="qIk-U8-6ba"/>
+                                                <constraint firstAttribute="trailing" secondItem="S9k-Dz-x07" secondAttribute="trailing" constant="54" id="ttf-yO-gD0"/>
                                                 <constraint firstItem="xN2-rx-PBi" firstAttribute="top" secondItem="zJX-q3-alf" secondAttribute="top" id="uHJ-86-fgF"/>
                                                 <constraint firstAttribute="bottom" secondItem="yV3-fq-jUg" secondAttribute="bottom" id="ulB-Tn-DOQ"/>
                                             </constraints>
@@ -284,6 +293,7 @@
                                         <connections>
                                             <outlet property="cellImage" destination="xN2-rx-PBi" id="TXs-Wc-BAA"/>
                                             <outlet property="itemGoldCost" destination="yV3-fq-jUg" id="PUT-Xh-a0Z"/>
+                                            <outlet property="restoreHungerValue" destination="S9k-Dz-x07" id="P5G-fu-d8N"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
