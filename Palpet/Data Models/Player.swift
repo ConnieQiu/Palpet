@@ -8,5 +8,5 @@
 import Foundation
 
 class Player{
-    var gold = 300
+    var gold = 1000
 }

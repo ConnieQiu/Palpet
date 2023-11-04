@@ -20,7 +20,6 @@ struct OpenWeatherAPI{
     
     func getWeather(for city: String) async throws -> WeatherResponse{
         let apiKey = "ca02f2634dadc82ce57b53b9d2c830a0"
-        //let city = "New York"
         
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)")!
         let urlRequest = URLRequest(url: url)
@@ -29,12 +28,14 @@ struct OpenWeatherAPI{
         guard let response = response as? HTTPURLResponse else {
             throw OpenWeatherAPIError.requestFailed(message: "Response is not HTTPURLResponse.")
         }
-
-        guard 404 ~= response.statusCode else {
+       
+        guard 200...202 ~= response.statusCode else {
             throw OpenWeatherAPIError.requestFailed(message: "Invalid city name")
+            
         }
         
         let weather = try JSONDecoder().decode(WeatherResponse.self, from: data)
+        
         
         return weather
 

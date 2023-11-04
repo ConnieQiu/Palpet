@@ -7,7 +7,14 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController, WeatherViewControllerDelegate {
+
+protocol MainScreenViewControllerDelegate: AnyObject{
+    func sendPetIsFullSignal()
+    
+    func sendPetIsNotFullSignal()
+}
+
+class MainScreenViewController: UIViewController, WeatherViewControllerDelegate, ShopViewControllerDelegate {
     
     @IBOutlet weak var rainyBackground: UIImageView!
     @IBOutlet weak var cloudyBackground: UIImageView!
@@ -19,6 +26,9 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
     @IBOutlet weak var twentyHealthBar: UIImageView!
     @IBOutlet weak var zeroHealthBar: UIImageView!
     
+  
+    
+    
     /*var weather: String? {
         didSet{
             setWeather()
@@ -27,7 +37,11 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
     
     var firstLoad = true
     
-    var myPet: Pet!
+    //var myPet: Pet!
+    
+    var hungerValueNum = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +49,21 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
         setUpUI()
         
         if firstLoad == true{
-            createPet()
+            //createPet()
             firstLoad = false
         }
         
-        updateHunger()
+        startTimer()
+        
+        if let tabBarController = self.tabBarController as? TabBarViewController{
+            let shopViewController = tabBarController.viewControllers?[2] as? ShopViewController
+            shopViewController?.delegate = self
+        }
+        petAnimation()
+
     }
+
+    
     
     
     
@@ -53,9 +76,32 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
         }
         
     }
+    
+    func petAnimation(){
+        print("animating")
+        let eyesOpen = UIImage(named: "fixedpet")
+        let eyesClosed = UIImage(named: "pet-blink")
+        
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 250)
+        //imageView.image = eyesOpen
+        view.addSubview(imageView)
+        
+        let petBlinkAnimation = CAKeyframeAnimation()
+        petBlinkAnimation.duration = 1.0
+        petBlinkAnimation.values = [eyesOpen?.cgImage! as Any, eyesClosed?.cgImage! as Any]
+        petBlinkAnimation.keyTimes = [0.0, 1.0]
+       
+       
+        
+       
+        
+        petBlinkAnimation.repeatCount = .greatestFiniteMagnitude
+        imageView.layer.add(petBlinkAnimation, forKey: "blink")
+    }
 
     
-    // MARK: - Weather Method
+    // MARK: - Delegate Methods
     
     
     func weatherToMain(_ controller: WeatherViewController, didRecieveWeatherType weatherType: String) {
@@ -93,49 +139,77 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate 
         }
     }*/
     
-    // MARK: - Pet Methods
-    
-    func createPet(){
-        myPet = Pet();
-       
+    func feedButton(withHungerNum hungerNum: Int) {
+        print("hunger total: " + String(Pet.shared.hunger + hungerNum))
+        if Pet.shared.hunger <= 100 && (Pet.shared.hunger + hungerNum) <= 100{
+            hungerValueNum = hungerNum
+            Pet.shared.hunger += hungerValueNum
+            print("inside feedButton: " + String(Pet.shared.hunger))
+            updateHunger()
+            
+        }else if Pet.shared.hunger <= 100 && (Pet.shared.hunger + hungerNum) > 100{
+            Pet.shared.hunger = 100
+            print("inside else if: " + String(Pet.shared.hunger))
+            updateHunger()
+        }
     }
     
-    func updateHunger(){
+    // MARK: - Pet Methods
+    
+    /*func createPet(){
+        myPet = Pet();
+       
+    }*/
+    
+    func startTimer(){
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true){
             timer in
-            self.myPet.hunger -= 20
+            Pet.shared.hunger -= 20
+            Pet.shared.isFull = false
             //update health bar beloe here
-            print("Pet hunger: " + String(self.myPet.hunger))
-            self.fullHealthBar.isHidden = true
-            self.eightyHealthBar.isHidden = true
-            self.sixtyHealthBar.isHidden = true
-            self.fourtyHealthBar.isHidden = true
-            self.twentyHealthBar.isHidden = true
-            self.zeroHealthBar.isHidden = true
-            
-            switch self.myPet.hunger{
-                case 100:
-                    self.fullHealthBar.isHidden = false
-                case 80:
-                    self.eightyHealthBar.isHidden = false
-                case 60:
-                    self.sixtyHealthBar.isHidden = false
-                case 40:
-                    self.fourtyHealthBar.isHidden = false
-                case 20:
-                    self.twentyHealthBar.isHidden = false
-                case 0:
-                    self.zeroHealthBar.isHidden = false
-                default:
-                    self.fullHealthBar.isHidden = false
-            }
-            
-            if self.myPet.hunger == 0 {
+            print("Pet hunger: " + String(Pet.shared.hunger))
+
+            self.updateHunger()
+            if Pet.shared.hunger == 0 {
                 timer.invalidate()
             }
         }
 
     }
+    
+    func updateHunger(){
+        
+        self.fullHealthBar.isHidden = true
+        self.eightyHealthBar.isHidden = true
+        self.sixtyHealthBar.isHidden = true
+        self.fourtyHealthBar.isHidden = true
+        self.twentyHealthBar.isHidden = true
+        self.zeroHealthBar.isHidden = true
+        
+        switch Pet.shared.hunger{
+            case 100:
+                self.fullHealthBar.isHidden = false
+                Pet.shared.isFull = true
+            case 80:
+                self.eightyHealthBar.isHidden = false
+                Pet.shared.isFull = false
+            case 60:
+                self.sixtyHealthBar.isHidden = false
+                Pet.shared.isFull = false
+            case 40:
+                self.fourtyHealthBar.isHidden = false
+                Pet.shared.isFull = false
+            case 20:
+                self.twentyHealthBar.isHidden = false
+                Pet.shared.isFull = false
+            case 0:
+                self.zeroHealthBar.isHidden = false
+                Pet.shared.isFull = false
+            default:
+                self.fullHealthBar.isHidden = false
+        }
+    }
+    
 
 }
 

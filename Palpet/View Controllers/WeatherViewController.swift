@@ -36,6 +36,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
             print("Weather")
             Task{
                 do {
+
                     let weatherData = try await OpenWeatherAPI.shared.getWeather(for: cityName ?? "default")
                     weatherType = weatherData.weather[0].main
                 
@@ -52,7 +53,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
                         self.present(alertController, animated: true)
                         
                     }else{
-                        let alertController = UIAlertController(title: "", message: "Background changed!", preferredStyle: .alert)
+                        let alertController = UIAlertController(title: "\(weatherType)", message: "Background changed!", preferredStyle: .alert)
                     
                         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alertController.addAction(action)

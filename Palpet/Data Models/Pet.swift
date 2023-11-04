@@ -8,5 +8,7 @@
 import Foundation
 
 class Pet{
+    static let shared = Pet()
     var hunger = 100
+    var isFull = true
 }

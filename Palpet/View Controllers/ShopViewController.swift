@@ -7,14 +7,55 @@
 
 import UIKit
 
-class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource  {
+protocol ShopViewControllerDelegate: AnyObject{
+    func feedButton(withHungerNum hungerNum: Int)
+}
+
+class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
     
+    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var playerGoldAmount: UILabel!
-    
     @IBOutlet weak var hungerRestoreValue: UILabel!
+    @IBOutlet weak var feedButton: UIButton!
+    
+    weak var delegate: ShopViewControllerDelegate?
+
+    
+    //send hunger value to MainScreenViewController if pet is not full
+    @IBAction func feedButtonUsed(_ sender: UIButton) {
+        if(!Pet.shared.isFull && currentItemPriceInt < myPlayer.gold || !Pet.shared.isFull && currentItemPriceInt == myPlayer.gold){
+            delegate?.feedButton(withHungerNum: currentItemHungerValueInt)
+            let intNewPlayerGold: Int
+            intNewPlayerGold = myPlayer.gold - currentItemPriceInt
+            playerGoldAmount.text = String(intNewPlayerGold)
+            myPlayer.gold = intNewPlayerGold
+            timesFed += 1
+            if timesFed > 0 && itemAlreadyAdded == false{
+                addItemToShop()
+                itemAlreadyAdded = true
+            }
+        }else if(!Pet.shared.isFull && currentItemPriceInt > myPlayer.gold){
+            let alertController = UIAlertController(title: "", message: "Not enough gold!", preferredStyle: .alert)
+        
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true)
+        }
+        else{
+            let alertController = UIAlertController(title: "", message: "Pet already full!", preferredStyle: .alert)
+        
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true)
+        }
+        
+        //print("New player gold amount label: " + (playerGoldAmount.text ?? "0"))
+        //print("New player gold amount: " + String(myPlayer.gold))
+        
+    }
+    
     var items: [FoodItem] = []
     //still need to increment every time pet is fed
     var timesFed = 0
@@ -23,6 +64,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var myPlayer: Player!
     var currentItemPriceInt = 0
     var currentItemHungerValueInt = 0
+    var itemAlreadyAdded = false
     
     
     
@@ -31,22 +73,29 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         super.viewDidLoad()
         
-        guard let itemImage = UIImage(named: "just apple icon") else {
+        guard let cherryItemIcon = UIImage(named: "cherry-icon") else {
             print("No image")
             abort()
         }
         
-        let apple = FoodItem(image: itemImage, goldCost: "100g", hungerValue: "20")
-        let orange = FoodItem(image: itemImage, goldCost: "250g", hungerValue: "40")
-        let pear = FoodItem(image: itemImage, goldCost: "300g", hungerValue: "60")
+        guard let grapeItemIcon = UIImage(named: "grape-icon")else{
+            print("No image")
+            abort()
+        }
+        
+        guard let strawberryItemIcon = UIImage(named: "strawberry-icon")else{
+            print("No image")
+            abort()
+        }
+        
+        let cherry = FoodItem(image: cherryItemIcon, goldCost: "100g", hungerValue: "20")
+        let grape = FoodItem(image: grapeItemIcon, goldCost: "200g", hungerValue: "40")
+        let strawberry = FoodItem(image: strawberryItemIcon, goldCost: "300g", hungerValue: "60")
 
         
-        print("Hello")
-        items = [apple, orange, pear]
+        items = [cherry, grape,strawberry]
+        feedButton.isEnabled = false
         
-        if timesFed > 5 {
-            addItemToShop()
-        }
 
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
@@ -55,24 +104,38 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if isFirstLoad == true{
             myPlayer = Player()
             isFirstLoad = false
-            print("playerGold " + String(myPlayer.gold) )
+            //print("playerGold " + String(myPlayer.gold) )
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         playerGoldAmount.text = String(myPlayer.gold)
+        if myPlayer.gold == 0 || myPlayer.gold < 0 {
+            feedButton.isEnabled = false
+        }
     }
     
     //Add more items after a certain amount of feeds.
     func addItemToShop(){
-        guard let itemImage = UIImage(named: "just apple icon") else {
+        
+        let alertController = UIAlertController(title: "Congratulations", message: "New food added to shop!", preferredStyle: .alert)
+    
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true)
+        
+        guard let itemImage = UIImage(named: "apple-icon") else {
             print("No image")
             abort()
         }
-        let dragonfruit = FoodItem(image: itemImage, goldCost: "500g", hungerValue: "80")
-        items.append(dragonfruit)
-        
+        let apple = FoodItem(image: itemImage, goldCost: "500g", hungerValue: "80")
+        items.append(apple)
+        collectionView.reloadData()
     }
+    
+    
+    // MARK: - Collection View
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
@@ -95,6 +158,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let currentItemHungerValueString = cell.restoreHungerValue.text ?? "0"
         currentItemHungerValueInt = Int(currentItemHungerValueString) ?? 0
+        feedButton.isEnabled = true
         
         //print("Gold price: " + String(currentItemPriceInt))
         //print("Hunger value: " + String(currentItemHungerValueInt))
@@ -105,6 +169,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.cellImage.layer.borderWidth = 0
         //currentItemPriceInt = 0
         //currentItemHungerValueInt = 0
+        feedButton.isEnabled = false
     }
 
 }

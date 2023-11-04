@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "just apple icon.PNG",
+      "filename" : "pet-blink.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "apple-icon-2x.png",
+      "filename" : "pet-blink 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "apple-icon-3x.png",
+      "filename" : "pet-blink 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

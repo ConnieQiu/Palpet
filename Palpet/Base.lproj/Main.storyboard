@@ -239,6 +239,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Feed">
                                     <color key="baseBackgroundColor" red="1" green="0.71251306690000005" blue="0.90993588849999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="feedButtonUsed:" destination="EFI-Mh-r7K" eventType="touchUpInside" id="Csu-cs-69o"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lfT-1j-Bkx">
                                 <rect key="frame" x="16" y="62" width="343" height="294"/>
@@ -332,6 +335,7 @@
                     <tabBarItem key="tabBarItem" title="Shop" image="storefront" catalog="system" id="a4l-fq-y7b"/>
                     <connections>
                         <outlet property="collectionView" destination="lfT-1j-Bkx" id="vAf-5F-R6s"/>
+                        <outlet property="feedButton" destination="vHJ-dK-Yq2" id="iau-4C-nUr"/>
                         <outlet property="playerGoldAmount" destination="dx5-5x-j28" id="leF-wo-chj"/>
                     </connections>
                 </viewController>
