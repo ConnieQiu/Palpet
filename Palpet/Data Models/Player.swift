@@ -8,5 +8,6 @@
 import Foundation
 
 class Player{
-    var gold = 1000
+    static let shared = Player()
+    var gold = 900
 }

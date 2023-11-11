@@ -8,12 +8,6 @@
 import UIKit
 
 
-protocol MainScreenViewControllerDelegate: AnyObject{
-    func sendPetIsFullSignal()
-    
-    func sendPetIsNotFullSignal()
-}
-
 class MainScreenViewController: UIViewController, WeatherViewControllerDelegate, ShopViewControllerDelegate {
     
     @IBOutlet weak var rainyBackground: UIImageView!
@@ -25,8 +19,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     @IBOutlet weak var fourtyHealthBar: UIImageView!
     @IBOutlet weak var twentyHealthBar: UIImageView!
     @IBOutlet weak var zeroHealthBar: UIImageView!
-    
-  
+    @IBOutlet weak var petImage: UIImageView!
     
     
     /*var weather: String? {
@@ -55,18 +48,16 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         
         startTimer()
         
+        
         if let tabBarController = self.tabBarController as? TabBarViewController{
             let shopViewController = tabBarController.viewControllers?[2] as? ShopViewController
             shopViewController?.delegate = self
         }
-        petAnimation()
+        repeatBlinkAnimation()
+        petBlinkAnimation()
 
     }
 
-    
-    
-    
-    
     func setUpUI(){
        
         let customColor = UIColor(red: 248 / 255, green: 200 / 255 , blue: 220 / 255, alpha: 1.0)
@@ -77,27 +68,36 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         
     }
     
-    func petAnimation(){
+    func repeatBlinkAnimation(){
+        Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(petBlinkAnimation), userInfo: nil, repeats: true)
+    }
+    
+    @objc func petBlinkAnimation(){
         print("animating")
-        let eyesOpen = UIImage(named: "fixedpet")
-        let eyesClosed = UIImage(named: "pet-blink")
+        let eyesOpen = UIImage(named: "fixedpet")?.cgImage
+        let eyesClosed = UIImage(named: "pet-blink")?.cgImage
+        petImage.layer.contents = eyesOpen
         
-        let imageView = UIImageView()
+        /*let imageView = UIImageView()
         imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 250)
-        //imageView.image = eyesOpen
+        imageView.image = eyesOpen
         view.addSubview(imageView)
         
         let petBlinkAnimation = CAKeyframeAnimation()
         petBlinkAnimation.duration = 1.0
         petBlinkAnimation.values = [eyesOpen?.cgImage! as Any, eyesClosed?.cgImage! as Any]
         petBlinkAnimation.keyTimes = [0.0, 1.0]
-       
-       
-        
-       
         
         petBlinkAnimation.repeatCount = .greatestFiniteMagnitude
-        imageView.layer.add(petBlinkAnimation, forKey: "blink")
+        imageView.layer.add(petBlinkAnimation, forKey: "blink")*/
+        let blinkAnimation: CABasicAnimation = CABasicAnimation(keyPath: "contents")
+        
+        blinkAnimation.fromValue = eyesOpen
+        blinkAnimation.toValue = eyesClosed
+        blinkAnimation.duration = 0.4
+        petImage.layer.add(blinkAnimation, forKey: "contents")
+        
+        
     }
 
     

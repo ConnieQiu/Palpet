@@ -12,6 +12,7 @@ protocol ShopViewControllerDelegate: AnyObject{
 }
 
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
 
     
     
@@ -25,18 +26,18 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     //send hunger value to MainScreenViewController if pet is not full
     @IBAction func feedButtonUsed(_ sender: UIButton) {
-        if(!Pet.shared.isFull && currentItemPriceInt < myPlayer.gold || !Pet.shared.isFull && currentItemPriceInt == myPlayer.gold){
+        if(!Pet.shared.isFull && currentItemPriceInt < Player.shared.gold || !Pet.shared.isFull && currentItemPriceInt == Player.shared.gold){
             delegate?.feedButton(withHungerNum: currentItemHungerValueInt)
             let intNewPlayerGold: Int
-            intNewPlayerGold = myPlayer.gold - currentItemPriceInt
+            intNewPlayerGold = Player.shared.gold - currentItemPriceInt
             playerGoldAmount.text = String(intNewPlayerGold)
-            myPlayer.gold = intNewPlayerGold
+            Player.shared.gold = intNewPlayerGold
             timesFed += 1
             if timesFed > 0 && itemAlreadyAdded == false{
                 addItemToShop()
                 itemAlreadyAdded = true
             }
-        }else if(!Pet.shared.isFull && currentItemPriceInt > myPlayer.gold){
+        }else if(!Pet.shared.isFull && currentItemPriceInt > Player.shared.gold){
             let alertController = UIAlertController(title: "", message: "Not enough gold!", preferredStyle: .alert)
         
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -107,11 +108,12 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //print("playerGold " + String(myPlayer.gold) )
         }
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        playerGoldAmount.text = String(myPlayer.gold)
-        if myPlayer.gold == 0 || myPlayer.gold < 0 {
+        playerGoldAmount.text = String(Player.shared.gold)
+        if Player.shared.gold == 0 || Player.shared.gold < 0 {
             feedButton.isEnabled = false
         }
     }
@@ -133,6 +135,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         items.append(apple)
         collectionView.reloadData()
     }
+    
     
     
     // MARK: - Collection View

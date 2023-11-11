@@ -94,6 +94,7 @@
                         <outlet property="eightyHealthBar" destination="qvc-BP-9Or" id="u4Z-pY-xa6"/>
                         <outlet property="fourtyHealthBar" destination="zze-b9-suX" id="zPp-Ei-sPF"/>
                         <outlet property="fullHealthBar" destination="ovk-ac-6ck" id="HT5-HR-Ie7"/>
+                        <outlet property="petImage" destination="cBj-Jz-TcO" id="LI7-01-XpT"/>
                         <outlet property="rainyBackground" destination="7MR-hm-UBS" id="hR2-c2-Xem"/>
                         <outlet property="sixtyHealthBar" destination="vFD-dL-rCo" id="ves-Rp-zNL"/>
                         <outlet property="twentyHealthBar" destination="mg3-FA-TaL" id="FiP-Dn-jrD"/>
@@ -112,48 +113,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess the number!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-Kc-zx1">
-                                <rect key="frame" x="71" y="41" width="242" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get more gold the closer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJZ-BV-dOS">
-                                <rect key="frame" x="83" y="101" width="209" height="23"/>
+                                <rect key="frame" x="83" y="121" width="209" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you get to the number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZQ-TW-fFL">
-                                <rect key="frame" x="92" y="125" width="191" height="23"/>
+                                <rect key="frame" x="92" y="145" width="191" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-1a-eH4">
-                                <rect key="frame" x="38" y="252" width="299" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a number from 1 to 200" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-1a-eH4">
+                                <rect key="frame" x="43" y="317" width="299" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEk-u8-GUe">
+                                <rect key="frame" x="155" y="218" width="64" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess the number!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-Kc-zx1">
+                                <rect key="frame" x="71" y="55" width="242" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" image="gachapon-edited" translatesAutoresizingMaskIntoConstraints="NO" id="E5Q-ZA-SiO">
+                                <rect key="frame" x="71" y="365" width="233" height="245"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XGv-Ny-tWA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5BR-1a-eH4" firstAttribute="top" secondItem="9ZQ-TW-fFL" secondAttribute="bottom" constant="104" id="1D3-TD-jeR"/>
+                            <constraint firstItem="gX9-Kc-zx1" firstAttribute="top" secondItem="XGv-Ny-tWA" secondAttribute="top" constant="35" id="29F-N5-mBL"/>
+                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="bottom" secondItem="E5Q-ZA-SiO" secondAttribute="bottom" constant="8" id="5sG-Df-wex"/>
                             <constraint firstItem="mJZ-BV-dOS" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="83" id="6Td-cC-j7G"/>
-                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="5BR-1a-eH4" secondAttribute="trailing" constant="38" id="D7J-Zd-SES"/>
-                            <constraint firstItem="5BR-1a-eH4" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="38" id="UaC-CA-AXI"/>
-                            <constraint firstItem="gX9-Kc-zx1" firstAttribute="top" secondItem="XGv-Ny-tWA" secondAttribute="top" constant="21" id="Vwl-Xv-95p"/>
+                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="gX9-Kc-zx1" secondAttribute="trailing" constant="62" id="A7p-Sb-9vk"/>
+                            <constraint firstItem="5BR-1a-eH4" firstAttribute="top" secondItem="VEk-u8-GUe" secondAttribute="bottom" constant="58" id="QmR-Y5-rLs"/>
+                            <constraint firstItem="5BR-1a-eH4" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="43" id="Ren-pM-4Il"/>
+                            <constraint firstItem="VEk-u8-GUe" firstAttribute="top" secondItem="9ZQ-TW-fFL" secondAttribute="bottom" constant="50" id="Sed-eb-WWz"/>
+                            <constraint firstItem="VEk-u8-GUe" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="155" id="U78-a1-HwS"/>
+                            <constraint firstItem="E5Q-ZA-SiO" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="71" id="YTa-eg-Mkt"/>
+                            <constraint firstItem="E5Q-ZA-SiO" firstAttribute="top" secondItem="5BR-1a-eH4" secondAttribute="bottom" constant="14" id="YhK-1d-eLU"/>
+                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="5BR-1a-eH4" secondAttribute="trailing" constant="33" id="boq-RO-mMe"/>
+                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="VEk-u8-GUe" secondAttribute="trailing" constant="156" id="dfH-rv-YjX"/>
                             <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="mJZ-BV-dOS" secondAttribute="trailing" constant="83" id="eLq-wC-VrH"/>
                             <constraint firstItem="gX9-Kc-zx1" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="71" id="ixW-Cr-NKe"/>
                             <constraint firstItem="9ZQ-TW-fFL" firstAttribute="top" secondItem="mJZ-BV-dOS" secondAttribute="bottom" constant="1" id="nvD-dj-SDw"/>
                             <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="9ZQ-TW-fFL" secondAttribute="trailing" constant="92" id="oEa-Qd-dLG"/>
-                            <constraint firstItem="mJZ-BV-dOS" firstAttribute="top" secondItem="gX9-Kc-zx1" secondAttribute="bottom" constant="25" id="ulA-LO-DwH"/>
+                            <constraint firstItem="gX9-Kc-zx1" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="71" id="qq3-Z3-ChV"/>
+                            <constraint firstItem="mJZ-BV-dOS" firstAttribute="top" secondItem="gX9-Kc-zx1" secondAttribute="bottom" constant="31" id="wHs-cd-ALH"/>
                             <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="gX9-Kc-zx1" secondAttribute="trailing" constant="62" id="wT6-Lq-JgK"/>
+                            <constraint firstItem="XGv-Ny-tWA" firstAttribute="trailing" secondItem="E5Q-ZA-SiO" secondAttribute="trailing" constant="71" id="x35-Yw-rTR"/>
                             <constraint firstItem="9ZQ-TW-fFL" firstAttribute="leading" secondItem="XGv-Ny-tWA" secondAttribute="leading" constant="92" id="zdG-fs-y2J"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Game" image="gamecontroller" catalog="system" id="o15-fm-rAA"/>
+                    <connections>
+                        <outlet property="changingNumbersLabel" destination="VEk-u8-GUe" id="P9y-ED-lSO"/>
+                        <outlet property="userGuessedNumber" destination="5BR-1a-eH4" id="CFH-9d-RtK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJ9-Nw-hbX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -376,6 +399,7 @@
         <image name="final background" width="512" height="512"/>
         <image name="fixedpet" width="359" height="433.5"/>
         <image name="full health bar" width="458.5" height="79.5"/>
+        <image name="gachapon-edited" width="183" height="181.5"/>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="rain background" width="512" height="512"/>
