@@ -36,13 +36,14 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
             print("Weather")
             Task{
                 do {
-
+                    
                     let weatherData = try await OpenWeatherAPI.shared.getWeather(for: cityName ?? "default")
+                    //print("testing")
                     weatherType = weatherData.weather[0].main
                 
                     print("type:" + weatherType)
                     
- 
+                    
                     
                     //handle alerts
                     if weatherType == previousWeatherType{

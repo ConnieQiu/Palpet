@@ -22,14 +22,14 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         let lightPeachColor = UIColor(red: 255 / 255, green: 184 / 255 , blue: 201 / 255, alpha: 1.0)
         self.view.backgroundColor = lightPeachColor
         userGuessedNumber.delegate = self
-        //switchNumbersLabel()
+        switchNumbersLabel()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGestureRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //generateGameNumber()
+        generateGameNumber()
     }
     
     @objc func hideKeyboard(){

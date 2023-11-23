@@ -33,6 +33,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     //var myPet: Pet!
     
     var hungerValueNum = 0
+    let defaults = UserDefaults.standard
     
     
     
@@ -55,8 +56,14 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         }
         repeatBlinkAnimation()
         petBlinkAnimation()
+        repeatEarAnimation()
+        petEarAnimation()
+        saveDataTimer()
+        saveData()
+        updateHunger()
 
     }
+    
 
     func setUpUI(){
        
@@ -73,23 +80,9 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     }
     
     @objc func petBlinkAnimation(){
-        print("animating")
+        //print("blink animating")
         let eyesOpen = UIImage(named: "fixedpet")?.cgImage
         let eyesClosed = UIImage(named: "pet-blink")?.cgImage
-        petImage.layer.contents = eyesOpen
-        
-        /*let imageView = UIImageView()
-        imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 250)
-        imageView.image = eyesOpen
-        view.addSubview(imageView)
-        
-        let petBlinkAnimation = CAKeyframeAnimation()
-        petBlinkAnimation.duration = 1.0
-        petBlinkAnimation.values = [eyesOpen?.cgImage! as Any, eyesClosed?.cgImage! as Any]
-        petBlinkAnimation.keyTimes = [0.0, 1.0]
-        
-        petBlinkAnimation.repeatCount = .greatestFiniteMagnitude
-        imageView.layer.add(petBlinkAnimation, forKey: "blink")*/
         let blinkAnimation: CABasicAnimation = CABasicAnimation(keyPath: "contents")
         
         blinkAnimation.fromValue = eyesOpen
@@ -98,6 +91,34 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         petImage.layer.add(blinkAnimation, forKey: "contents")
         
         
+    }
+    
+    func repeatEarAnimation(){
+        Timer.scheduledTimer(timeInterval: 6.0, target: self, selector: #selector(petEarAnimation), userInfo: nil, repeats: true)
+    }
+    
+    @objc func petEarAnimation(){
+        //print("ear animating")
+        let regularImage = UIImage(named: "fixedpet")?.cgImage
+        let movedEarsImage = UIImage(named: "pet-moved-ears")?.cgImage
+        let earAnimation: CABasicAnimation = CABasicAnimation(keyPath: "contents")
+        
+        earAnimation.fromValue = regularImage
+        earAnimation.toValue = movedEarsImage
+        earAnimation.duration = 0.4
+        petImage.layer.add(earAnimation, forKey: "contents")
+        
+        
+    }
+    
+    func saveDataTimer(){
+        Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(saveData), userInfo: nil, repeats: true)
+    }
+    
+    @objc func saveData(){
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+        //print("saveData main controller")
     }
 
     
@@ -152,6 +173,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
             print("inside else if: " + String(Pet.shared.hunger))
             updateHunger()
         }
+        updateHunger()
     }
     
     // MARK: - Pet Methods
@@ -162,17 +184,20 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     }*/
     
     func startTimer(){
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true){
+        Timer.scheduledTimer(withTimeInterval: 20, repeats: true){
             timer in
-            Pet.shared.hunger -= 20
-            Pet.shared.isFull = false
-            //update health bar beloe here
-            print("Pet hunger: " + String(Pet.shared.hunger))
-
-            self.updateHunger()
-            if Pet.shared.hunger == 0 {
-                timer.invalidate()
+            if Pet.shared.hunger != 0{
+                Pet.shared.hunger -= 20
+                print("before update: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                Pet.shared.isFull = false
+                //update health bar beloe here
+                //print("Pet hunger: " + String(Pet.shared.hunger))
             }
+            self.updateHunger()
+            /*if Pet.shared.hunger == 0 {
+                timer.invalidate()
+            }*/
         }
 
     }
@@ -186,28 +211,41 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         self.twentyHealthBar.isHidden = true
         self.zeroHealthBar.isHidden = true
         
-        switch Pet.shared.hunger{
+        switch UserDefaults.standard.integer(forKey: "PetHunger"){
             case 100:
                 self.fullHealthBar.isHidden = false
                 Pet.shared.isFull = true
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                //print("saving pet hunger")
             case 80:
                 self.eightyHealthBar.isHidden = false
                 Pet.shared.isFull = false
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                print("saving pet hunger")
             case 60:
                 self.sixtyHealthBar.isHidden = false
                 Pet.shared.isFull = false
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                print("saving pet hunger")
             case 40:
                 self.fourtyHealthBar.isHidden = false
                 Pet.shared.isFull = false
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                print("saving pet hunger")
             case 20:
                 self.twentyHealthBar.isHidden = false
                 Pet.shared.isFull = false
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                print("saving pet hunger")
             case 0:
                 self.zeroHealthBar.isHidden = false
                 Pet.shared.isFull = false
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                print("saving pet hunger")
             default:
                 self.fullHealthBar.isHidden = false
         }
+        print("after update: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
     }
     
 

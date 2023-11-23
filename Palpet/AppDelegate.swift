@@ -15,6 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Player.shared.gold = UserDefaults.standard.integer(forKey: "Gold")
+        print("saved player gold: \(UserDefaults.standard.integer(forKey: "Gold"))")
+        //Pet.shared.hunger = UserDefaults.standard.integer(forKey: "PetHunger")
+        print("saved pet hunger: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
+        
+        //only load UserDefaults data if there is data saved, so will load starting gold and pet at full health when the app is launched for first time ever
+        if let goldData = UserDefaults.standard.string(forKey: "Gold"){
+            Player.shared.gold = UserDefaults.standard.integer(forKey: "Gold")
+        }
+        
+        if let petHungerData = UserDefaults.standard.string(forKey: "PetHunger"){
+            Pet.shared.hunger = UserDefaults.standard.integer(forKey: "PetHunger")
+        }
+
+        
         return true
     }
 
@@ -76,6 +92,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        //UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+        print("application entered background")
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        //UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+        print("application terminated")
+    }
+    
 
 }
 

@@ -24,8 +24,10 @@ struct OpenWeatherAPI{
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)")!
         let urlRequest = URLRequest(url: url)
         let (data, response) = try await urlSession.data(for: urlRequest)
+    
         
         guard let response = response as? HTTPURLResponse else {
+        
             throw OpenWeatherAPIError.requestFailed(message: "Response is not HTTPURLResponse.")
         }
        

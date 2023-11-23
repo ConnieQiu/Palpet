@@ -35,7 +35,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             timesFed += 1
             if timesFed > 0 && itemAlreadyAdded == false{
                 addItemToShop()
-                itemAlreadyAdded = true
+                
             }
         }else if(!Pet.shared.isFull && currentItemPriceInt > Player.shared.gold){
             let alertController = UIAlertController(title: "", message: "Not enough gold!", preferredStyle: .alert)
@@ -65,7 +65,7 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var myPlayer: Player!
     var currentItemPriceInt = 0
     var currentItemHungerValueInt = 0
-    var itemAlreadyAdded = false
+    var itemAlreadyAdded = UserDefaults.standard.bool(forKey: "itemAddedOrNot")
     
     
     
@@ -108,6 +108,11 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //print("playerGold " + String(myPlayer.gold) )
         }
         
+        //UserDefaults.standard.bool(forKey: "itemAddedOrNot")
+        if(itemAlreadyAdded == true){
+            addItemToShop()
+        }
+        
         
     }
     
@@ -121,18 +126,22 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //Add more items after a certain amount of feeds.
     func addItemToShop(){
         
-        let alertController = UIAlertController(title: "Congratulations", message: "New food added to shop!", preferredStyle: .alert)
+        if(itemAlreadyAdded == false){
+            let alertController = UIAlertController(title: "Congratulations", message: "New food added to shop!", preferredStyle: .alert)
     
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(action)
-        self.present(alertController, animated: true)
-        
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true)
+        }
+        itemAlreadyAdded = true
         guard let itemImage = UIImage(named: "apple-icon") else {
             print("No image")
             abort()
         }
         let apple = FoodItem(image: itemImage, goldCost: "500g", hungerValue: "80")
         items.append(apple)
+        UserDefaults.standard.set(itemAlreadyAdded, forKey: "itemAddedOrNot")
+        print("item added?: \(UserDefaults.standard.bool(forKey: "itemAddedOrNot"))")
         collectionView.reloadData()
     }
     
