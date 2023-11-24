@@ -8,7 +8,7 @@
 import UIKit
 
 
-class MainScreenViewController: UIViewController, WeatherViewControllerDelegate, ShopViewControllerDelegate {
+class MainScreenViewController: UIViewController, WeatherViewControllerDelegate, ShopViewControllerDelegate{
     
     @IBOutlet weak var rainyBackground: UIImageView!
     @IBOutlet weak var cloudyBackground: UIImageView!
@@ -33,9 +33,15 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     //var myPet: Pet!
     
     var hungerValueNum = 0
-    let defaults = UserDefaults.standard
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+            self.petImage.alpha = 0.3
+        
+            UIView.animate(withDuration: 0.2){
+                self.petImage.alpha = 1
+            }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +67,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         saveDataTimer()
         saveData()
         updateHunger()
+        
 
     }
     
@@ -73,10 +80,14 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
            tabBar.backgroundColor = customColor
         }
         
+        clearBackground.isHidden = UserDefaults.standard.bool(forKey: "clearBackground")
+        cloudyBackground.isHidden = UserDefaults.standard.bool(forKey: "cloudyBackground")
+        rainyBackground.isHidden = UserDefaults.standard.bool(forKey: "rainyBackground")
+        
     }
     
     func repeatBlinkAnimation(){
-        Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(petBlinkAnimation), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(petBlinkAnimation), userInfo: nil, repeats: true)
     }
     
     @objc func petBlinkAnimation(){
@@ -134,15 +145,24 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
             clearBackground.isHidden = true
             cloudyBackground.isHidden = false
             rainyBackground.isHidden = true
+            UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
+            UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
+            UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
             
         }else if weatherType == "Clear" {
             clearBackground.isHidden = false
             cloudyBackground.isHidden = true
             rainyBackground.isHidden = true
+            UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
+            UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
+            UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
         }else if weatherType == "Rain"{
             clearBackground.isHidden = true
             cloudyBackground.isHidden = true
             rainyBackground.isHidden = false
+            UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
+            UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
+            UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
         }
         
     }

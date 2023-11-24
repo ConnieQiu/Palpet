@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class FoodItemCell: UICollectionViewCell{
-    
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var itemGoldCost: UILabel!
     @IBOutlet weak var restoreHungerValue: UILabel!

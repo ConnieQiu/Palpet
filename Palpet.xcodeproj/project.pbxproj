@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90B10BE2B1061B40071E052 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B10BC2B1061B40071E052 /* WeatherCell.swift */; };
+		A90B10BF2B1061B40071E052 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A90B10BD2B1061B40071E052 /* WeatherCell.xib */; };
+		A90B10C12B1067640071E052 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90B10C02B1067640071E052 /* WeatherData.swift */; };
 		A935DB252AE3794F007044C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB242AE3794F007044C5 /* AppDelegate.swift */; };
 		A935DB272AE3794F007044C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB262AE3794F007044C5 /* SceneDelegate.swift */; };
 		A935DB292AE3794F007044C5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935DB282AE3794F007044C5 /* MainScreenViewController.swift */; };
@@ -26,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A90B10BC2B1061B40071E052 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		A90B10BD2B1061B40071E052 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		A90B10C02B1067640071E052 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherData.swift; path = ../../WeatherData.swift; sourceTree = "<group>"; };
 		A935DB212AE3794F007044C5 /* Palpet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palpet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A935DB242AE3794F007044C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A935DB262AE3794F007044C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +66,7 @@
 		A935DB182AE3794F007044C5 = {
 			isa = PBXGroup;
 			children = (
+				A90B10BD2B1061B40071E052 /* WeatherCell.xib */,
 				A935DB512AEDADFC007044C5 /* TabBarViewController.swift */,
 				A935DB232AE3794F007044C5 /* Palpet */,
 				A935DB222AE3794F007044C5 /* Products */,
@@ -109,6 +116,8 @@
 				A935DB532AEDE583007044C5 /* Pet.swift */,
 				A935DB432AE482A0007044C5 /* FoodItemCollectionCell.swift */,
 				A935DB402AE47EC3007044C5 /* FoodItem.swift */,
+				A90B10C02B1067640071E052 /* WeatherData.swift */,
+				A90B10BC2B1061B40071E052 /* WeatherCell.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -171,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90B10BF2B1061B40071E052 /* WeatherCell.xib in Resources */,
 				A935DB342AE37951007044C5 /* LaunchScreen.storyboard in Resources */,
 				A935DB312AE37951007044C5 /* Assets.xcassets in Resources */,
 				A935DB2C2AE3794F007044C5 /* Main.storyboard in Resources */,
@@ -185,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A935DB4C2AEC64F7007044C5 /* WeatherAPI.swift in Sources */,
+				A90B10C12B1067640071E052 /* WeatherData.swift in Sources */,
 				A935DB4E2AEC6B39007044C5 /* WeatherViewController.swift in Sources */,
 				A935DB522AEDADFC007044C5 /* TabBarViewController.swift in Sources */,
 				A935DB3E2AE46129007044C5 /* GameViewController.swift in Sources */,
@@ -194,6 +205,7 @@
 				A935DB252AE3794F007044C5 /* AppDelegate.swift in Sources */,
 				A935DB4A2AE48952007044C5 /* ShopViewController.swift in Sources */,
 				A935DB412AE47EC3007044C5 /* FoodItem.swift in Sources */,
+				A90B10BE2B1061B40071E052 /* WeatherCell.swift in Sources */,
 				A935DB542AEDE583007044C5 /* Pet.swift in Sources */,
 				A935DB272AE3794F007044C5 /* SceneDelegate.swift in Sources */,
 				A935DB442AE482A0007044C5 /* FoodItemCollectionCell.swift in Sources */,
