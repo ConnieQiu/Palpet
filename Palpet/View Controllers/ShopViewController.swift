@@ -13,16 +13,12 @@ protocol ShopViewControllerDelegate: AnyObject{
 
 class ShopViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
-
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var playerGoldAmount: UILabel!
     @IBOutlet weak var hungerRestoreValue: UILabel!
     @IBOutlet weak var feedButton: UIButton!
     
     weak var delegate: ShopViewControllerDelegate?
-
     
     //send hunger value to MainScreenViewController if pet is not full
     @IBAction func feedButtonUsed(_ sender: UIButton) {
@@ -35,8 +31,8 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             timesFed += 1
             if timesFed > 0 && itemAlreadyAdded == false{
                 addItemToShop()
-                
             }
+            
         }else if(!Pet.shared.isFull && currentItemPriceInt > Player.shared.gold){
             let alertController = UIAlertController(title: "", message: "Not enough gold!", preferredStyle: .alert)
         
@@ -58,17 +54,12 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     var items: [FoodItem] = []
-    //still need to increment every time pet is fed
     var timesFed = 0
-    
     var isFirstLoad = true
     var myPlayer: Player!
     var currentItemPriceInt = 0
     var currentItemHungerValueInt = 0
     var itemAlreadyAdded = UserDefaults.standard.bool(forKey: "itemAddedOrNot")
-    
-    
-    
     
     override func viewDidLoad() {
         
@@ -112,7 +103,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             addItemToShop()
         }
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,8 +133,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
         print("item added?: \(UserDefaults.standard.bool(forKey: "itemAddedOrNot"))")
         collectionView.reloadData()
     }
-    
-    
     
     // MARK: - Collection View
     
@@ -178,9 +166,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! FoodItemCell
         cell.cellImage.layer.borderWidth = 0
-        //currentItemPriceInt = 0
-        //currentItemHungerValueInt = 0
         feedButton.isEnabled = false
     }
-
 }

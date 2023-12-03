@@ -3,7 +3,7 @@
 //  Palpet
 //
 //  Created by Connie Qiu on 10/28/23.
-//
+//  Source: https://stackoverflow.com/questions/31696695/how-do-i-access-the-viewcontrollers-on-the-uitabbarcontroller-in-swift
 
 import UIKit
 
@@ -22,10 +22,7 @@ class TabBarViewController: UITabBarController {
                 }
             }
         }
-        
-        
     }
-    
 
     /*
     // MARK: - Navigation

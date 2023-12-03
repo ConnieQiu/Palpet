@@ -3,10 +3,10 @@
 //  Palpet
 //
 //  Created by Connie Qiu on 10/20/23.
-//
+//  General Source: UIKit Apprentice Beginning iOS Development with Swift
+//  Source for UserDefaults: https://stackoverflow.com/questions/31203241/how-can-i-use-userdefaults-in-swift
 
 import UIKit
-
 
 class MainScreenViewController: UIViewController, WeatherViewControllerDelegate, ShopViewControllerDelegate{
     
@@ -21,16 +21,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     @IBOutlet weak var zeroHealthBar: UIImageView!
     @IBOutlet weak var petImage: UIImageView!
     
-    
-    /*var weather: String? {
-        didSet{
-            setWeather()
-        }
-    }*/
-    
     var firstLoad = true
-    
-    //var myPet: Pet!
     
     var hungerValueNum = 0
     
@@ -49,7 +40,6 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         setUpUI()
         
         if firstLoad == true{
-            //createPet()
             firstLoad = false
         }
         
@@ -117,6 +107,10 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         rainyBackground.isHidden = UserDefaults.standard.bool(forKey: "rainyBackground")
         
     }
+    
+    /*Source for animations:
+     https://stackoverflow.com/questions/2834573/how-to-animate-the-change-of-image-in-an-uiimageview
+     */
     
     func repeatBlinkAnimation(){
         Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(petBlinkAnimation), userInfo: nil, repeats: true)
@@ -230,7 +224,6 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
             }
             self.updateHunger()
         }
-
     }
     
     func updateHunger(){
@@ -309,10 +302,6 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
         UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
     }
-    
-
-    
-
 }
 
 

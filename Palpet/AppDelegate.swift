@@ -15,10 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //Player.shared.gold = UserDefaults.standard.integer(forKey: "Gold")
         print("saved player gold: \(UserDefaults.standard.integer(forKey: "Gold"))")
-        //Pet.shared.hunger = UserDefaults.standard.integer(forKey: "PetHunger")
         print("saved pet hunger: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
         
         //only load UserDefaults data if there is data saved, so will load starting gold and pet at full health when the app is launched for first time ever

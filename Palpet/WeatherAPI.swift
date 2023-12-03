@@ -51,8 +51,6 @@ struct OpenWeatherAPI{
         }
     }
     
-    
-    
     enum OpenWeatherAPIError: Error{
         case requestFailed(message: String)
     }

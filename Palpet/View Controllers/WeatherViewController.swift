@@ -44,11 +44,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
         
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
-       
 
     }
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -73,8 +70,6 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
                     print("items in array: \(items.count)")
                     weatherTableView.reloadData()
                    
-                    
-                    
                     //handle alerts
                     if weatherType == previousWeatherType{
                         let alertController = UIAlertController(title: "No change", message: "Weather is the same.", preferredStyle: .alert)
@@ -116,10 +111,6 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
         delegate?.weatherToMain(self, didRecieveWeatherType: weatherType)
     }
 
-
-    
-
-    
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

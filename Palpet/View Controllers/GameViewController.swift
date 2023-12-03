@@ -91,8 +91,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             Player.shared.gold += 50
             print("new player gold \(Player.shared.gold)")
             
-            
-            
         }else if ((userNumber - 50)...(userNumber + 50)).contains(targetNumber){
             
             let alertController = UIAlertController(title: "Good try!", message: "You got 30g", preferredStyle: .alert)
@@ -120,7 +118,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
         }
         textField.text = ""
-        //textField.resignFirstResponder()
         return true
     }
     
