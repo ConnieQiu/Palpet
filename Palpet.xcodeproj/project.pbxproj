@@ -66,8 +66,6 @@
 		A935DB182AE3794F007044C5 = {
 			isa = PBXGroup;
 			children = (
-				A90B10BD2B1061B40071E052 /* WeatherCell.xib */,
-				A935DB512AEDADFC007044C5 /* TabBarViewController.swift */,
 				A935DB232AE3794F007044C5 /* Palpet */,
 				A935DB222AE3794F007044C5 /* Products */,
 			);
@@ -84,6 +82,8 @@
 		A935DB232AE3794F007044C5 /* Palpet */ = {
 			isa = PBXGroup;
 			children = (
+				A90B10BD2B1061B40071E052 /* WeatherCell.xib */,
+				A935DB512AEDADFC007044C5 /* TabBarViewController.swift */,
 				A935DB4B2AEC64F7007044C5 /* WeatherAPI.swift */,
 				A935DB242AE3794F007044C5 /* AppDelegate.swift */,
 				A935DB262AE3794F007044C5 /* SceneDelegate.swift */,

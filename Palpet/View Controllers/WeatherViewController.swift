@@ -24,6 +24,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
     var items: [WeatherData] = []
     var maxItemsInWeatherTable = 8
     
+    
     /*
      Source for Custom Table View Cell:
      https://www.youtube.com/watch?v=OOc-RhNQnLc
@@ -35,16 +36,9 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
         // Do any additional setup after loading the view.
         userCityText.delegate = self
         
-        
-        /*let completeWeatherData = WeatherData(city: cityName ?? "none", degreeNum: "50", weatherCondition: "Clouds")
-        items.append(completeWeatherData)
-        weatherTableView.dataSource = self
-        weatherTableView.delegate = self
-        weatherTableView.register(WeatherDataTableViewCell.self, forCellReuseIdentifier: "weatherData")*/
 
-        let completeWeatherData = WeatherData(city: "test city", weatherCondition: "Clouds")
+        let completeWeatherData = WeatherData(city: "City", weatherCondition: "Weather")
         items.append(completeWeatherData)
-        //weatherTableView.register(WeatherDataTableViewCell.self, forCellReuseIdentifier: "WeatherTableCell")
         weatherTableView.register(WeatherCell.nib(), forCellReuseIdentifier: WeatherCell.identifier)
         weatherTableView.reloadData()
         
@@ -75,10 +69,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
                     }
                     let completeWeatherData = WeatherData(city: cityName ?? "none", weatherCondition: weatherType)
                     items.append(completeWeatherData)
-                    //weatherTableView.dataSource = self
-                    //weatherTableView.delegate = self
                     weatherTableView.register(WeatherCell.nib(), forCellReuseIdentifier: WeatherCell.identifier)
-                    /*weatherTableView.register(WeatherDataTableViewCell.self, forCellReuseIdentifier: WeatherCell.identifier /*"WeatherTableCell"*/)*/
                     print("items in array: \(items.count)")
                     weatherTableView.reloadData()
                    
@@ -103,6 +94,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
                     }
                     textField.text = ""
                     previousWeatherType = weatherType
+                    UserDefaults.standard.set(previousWeatherType, forKey: "weatherType")
                 
                 } catch {
                     let alertController = UIAlertController(title: "Error", message: "Enter a valid city name", preferredStyle: .alert)
@@ -122,18 +114,8 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
     func sendDataToMainView(weather: String){
         print("test")
         delegate?.weatherToMain(self, didRecieveWeatherType: weatherType)
-        //performSegue(withIdentifier: "weatherToMain", sender: self)
     }
-    
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        print("in prepare")
-        if segue.identifier == "weatherToMain",
-           let mainViewController = segue.destination as? MainScreenViewController{
-            mainViewController.weather = weatherType
-           print("about to send weather")
-        }
-    }*/
+
 
     
 
@@ -146,20 +128,16 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        let cell = weatherTableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier/*"WeatherTableCell"*/, for: indexPath) as! WeatherCell/*WeatherDataTableViewCell*/
-        print("TESTING IN TABLEVIEW")
+        let cell = weatherTableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier/*"WeatherTableCell"*/, for: indexPath) as! WeatherCell
         print(items[indexPath.row].cityName)
-        //cell.configure(with: items[indexPath.row])
-        /*cell.cityLabel.text = items[indexPath.row].cityName
-        print("UMMM?")
-        cell.degree.text = items[indexPath.row].degree
-        cell.weatherType.text = items[indexPath.row].weatherType*/
         cell.cityLabel.text = items[indexPath.row].cityName
         cell.weatherLabel.text = items[indexPath.row].weatherType
         
         return cell
     }
     
+    
+
 
 
 

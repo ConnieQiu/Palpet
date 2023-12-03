@@ -108,7 +108,6 @@ class ShopViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //print("playerGold " + String(myPlayer.gold) )
         }
         
-        //UserDefaults.standard.bool(forKey: "itemAddedOrNot")
         if(itemAlreadyAdded == true){
             addItemToShop()
         }

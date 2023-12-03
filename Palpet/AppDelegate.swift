@@ -94,15 +94,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
-        //UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
         print("application entered background")
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+       
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
-        //UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
         print("application terminated")
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+        
     }
     
 

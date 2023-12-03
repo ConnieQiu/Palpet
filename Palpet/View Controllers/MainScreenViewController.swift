@@ -54,23 +54,55 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         }
         
         startTimer()
-        
+        petImage.isHidden = true
         
         if let tabBarController = self.tabBarController as? TabBarViewController{
             let shopViewController = tabBarController.viewControllers?[2] as? ShopViewController
             shopViewController?.delegate = self
         }
-        repeatBlinkAnimation()
-        petBlinkAnimation()
-        repeatEarAnimation()
-        petEarAnimation()
+        if(Pet.shared.hunger != 0){
+            petImage.isHidden = false
+            repeatBlinkAnimation()
+            petBlinkAnimation()
+            repeatEarAnimation()
+            petEarAnimation()
+        }
         saveDataTimer()
         saveData()
         updateHunger()
+            
         
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(Pet.shared.hunger == 0){
+            petImage.layer.removeAllAnimations()
+            let alertController = UIAlertController(title: "Pet died :(", message: "You will keep all previous gold when restarting.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Restart", style: .default){
+                (action) in
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
+                Pet.shared.isFull = true
+                self.zeroHealthBar.isHidden = true
+                self.fullHealthBar.isHidden = false
+                Pet.shared.hunger = 100
+                self.repeatEarAnimation()
+                self.petBlinkAnimation()
+                self.repeatBlinkAnimation()
+                self.petEarAnimation()
+                self.petImage.alpha = 0
+                self.petImage.isHidden = false
+                UIView.animate(withDuration: 5){
+                    self.petImage.alpha = 1
+                }
+                
+            }
+            alertController.addAction(action)
+            self.present(alertController, animated: true)
+            
+        }
+    }
 
     func setUpUI(){
        
@@ -123,7 +155,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     }
     
     func saveDataTimer(){
-        Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(saveData), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(saveData), userInfo: nil, repeats: true)
     }
     
     @objc func saveData(){
@@ -167,18 +199,6 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         
     }
     
-    /*func setWeather(_ myWeather: String){
-        print("in set weather")
-        print("is weather: " + weather)
-  
-        if myWeather == "Clouds"{
-            clearBackground.isHidden = true
-            cloudyBackground.isHidden = false
-        }else if myWeather == "Clear" {
-            clearBackground.isHidden = false
-            cloudyBackground.isHidden = true
-        }
-    }*/
     
     func feedButton(withHungerNum hungerNum: Int) {
         print("hunger total: " + String(Pet.shared.hunger + hungerNum))
@@ -197,27 +217,18 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     }
     
     // MARK: - Pet Methods
-    
-    /*func createPet(){
-        myPet = Pet();
-       
-    }*/
-    
+
     func startTimer(){
-        Timer.scheduledTimer(withTimeInterval: 20, repeats: true){
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true){
             timer in
             if Pet.shared.hunger != 0{
                 Pet.shared.hunger -= 20
                 print("before update: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
                 UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 Pet.shared.isFull = false
-                //update health bar beloe here
                 //print("Pet hunger: " + String(Pet.shared.hunger))
             }
             self.updateHunger()
-            /*if Pet.shared.hunger == 0 {
-                timer.invalidate()
-            }*/
         }
 
     }
@@ -233,40 +244,73 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         
         switch UserDefaults.standard.integer(forKey: "PetHunger"){
             case 100:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
                 self.fullHealthBar.isHidden = false
                 Pet.shared.isFull = true
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 //print("saving pet hunger")
             case 80:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
                 self.eightyHealthBar.isHidden = false
                 Pet.shared.isFull = false
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 print("saving pet hunger")
             case 60:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+            UserDefaults.standard.synchronize()
                 self.sixtyHealthBar.isHidden = false
                 Pet.shared.isFull = false
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 print("saving pet hunger")
             case 40:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
                 self.fourtyHealthBar.isHidden = false
                 Pet.shared.isFull = false
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 print("saving pet hunger")
             case 20:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
                 self.twentyHealthBar.isHidden = false
                 Pet.shared.isFull = false
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
                 print("saving pet hunger")
             case 0:
+                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                UserDefaults.standard.synchronize()
+                print("pet hunger in case 0: \(Pet.shared.hunger)")
                 self.zeroHealthBar.isHidden = false
                 Pet.shared.isFull = false
-                UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                self.petImage.isHidden = true
                 print("saving pet hunger")
+                let alertController = UIAlertController(title: "Pet died :(", message: "You will keep all previous gold when restarting.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Restart", style: .default){
+                    (action) in
+                    Pet.shared.hunger = 100
+                    UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+                    UserDefaults.standard.synchronize()
+                    Pet.shared.isFull = true
+                    self.zeroHealthBar.isHidden = true
+                    self.fullHealthBar.isHidden = false
+                    self.petImage.alpha = 0
+                    self.petImage.isHidden = false
+                    UIView.animate(withDuration: 2.5){
+                        self.petImage.alpha = 1
+                    }
+                }
+                print("in case 0: \(Pet.shared.hunger)")
+                alertController.addAction(action)
+                self.present(alertController, animated: true)
             default:
                 self.fullHealthBar.isHidden = false
         }
         print("after update: \(UserDefaults.standard.integer(forKey: "PetHunger"))")
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(Player.shared.gold, forKey: "Gold")
+        UserDefaults.standard.set(Pet.shared.hunger, forKey: "PetHunger")
+    }
+    
+
     
 
 }
