@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		A90B10BC2B1061B40071E052 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		A90B10BD2B1061B40071E052 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
-		A90B10C02B1067640071E052 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherData.swift; path = ../../WeatherData.swift; sourceTree = "<group>"; };
+		A90B10C02B1067640071E052 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherData.swift; path = ../WeatherData.swift; sourceTree = "<group>"; };
 		A935DB212AE3794F007044C5 /* Palpet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palpet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A935DB242AE3794F007044C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A935DB262AE3794F007044C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 				A935DB532AEDE583007044C5 /* Pet.swift */,
 				A935DB432AE482A0007044C5 /* FoodItemCollectionCell.swift */,
 				A935DB402AE47EC3007044C5 /* FoodItem.swift */,
-				A90B10C02B1067640071E052 /* WeatherData.swift */,
 				A90B10BC2B1061B40071E052 /* WeatherCell.swift */,
+				A90B10C02B1067640071E052 /* WeatherData.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";

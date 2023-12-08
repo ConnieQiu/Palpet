@@ -23,6 +23,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="background cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="tNN-gc-SWZ">
                                 <rect key="frame" x="-407" y="-462" width="969" height="1589"/>
                             </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="snow background" translatesAutoresizingMaskIntoConstraints="NO" id="PNG-8L-I5R">
+                                <rect key="frame" x="-433" y="-661" width="936" height="1920"/>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="final background" translatesAutoresizingMaskIntoConstraints="NO" id="Efu-db-cFC">
                                 <rect key="frame" x="-407" y="-750" width="975" height="2098"/>
                             </imageView>
@@ -55,6 +58,7 @@
                             <constraint firstItem="Efu-db-cFC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-407" id="1iT-kL-oeE"/>
                             <constraint firstItem="zze-b9-suX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1qG-kl-Gtw"/>
                             <constraint firstItem="ovk-ac-6ck" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3gx-KP-98e"/>
+                            <constraint firstItem="PNG-8L-I5R" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-433" id="7Ep-yd-xnl"/>
                             <constraint firstItem="cBj-Jz-TcO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8PG-Xg-ylH"/>
                             <constraint firstItem="mg3-FA-TaL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BkG-ke-lv9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iMz-11-Kct" secondAttribute="trailing" constant="76" id="J1O-ns-i4G"/>
@@ -66,15 +70,18 @@
                             <constraint firstAttribute="bottom" secondItem="7MR-hm-UBS" secondAttribute="bottom" constant="-221" id="Rz3-kb-AE1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vFD-dL-rCo" secondAttribute="trailing" constant="76" id="SK9-SF-dU5"/>
                             <constraint firstAttribute="bottom" secondItem="tNN-gc-SWZ" secondAttribute="bottom" constant="-283" id="SyA-9C-C4N"/>
+                            <constraint firstAttribute="trailing" secondItem="PNG-8L-I5R" secondAttribute="trailing" constant="-113" id="UVW-cu-PlN"/>
                             <constraint firstItem="iMz-11-Kct" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="V13-S9-OnZ"/>
                             <constraint firstItem="vFD-dL-rCo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WbE-8J-yta"/>
                             <constraint firstItem="iMz-11-Kct" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YcL-3G-5aC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zze-b9-suX" secondAttribute="trailing" constant="76" id="Ygc-f7-SqT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cBj-Jz-TcO" secondAttribute="trailing" constant="36" id="amd-CW-Nqh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ovk-ac-6ck" secondAttribute="trailing" constant="76" id="bUb-Lh-Bvi"/>
+                            <constraint firstItem="PNG-8L-I5R" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-661" id="jxw-vN-ilZ"/>
                             <constraint firstItem="Efu-db-cFC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-750" id="lvi-k1-bnJ"/>
                             <constraint firstItem="vFD-dL-rCo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lwb-4H-V8u"/>
                             <constraint firstAttribute="trailing" secondItem="7MR-hm-UBS" secondAttribute="trailing" constant="-172" id="pll-Iz-DNN"/>
+                            <constraint firstAttribute="bottom" secondItem="PNG-8L-I5R" secondAttribute="bottom" constant="-415" id="ppt-1I-Zgn"/>
                             <constraint firstItem="tNN-gc-SWZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-407" id="qz5-fO-l3A"/>
                             <constraint firstAttribute="trailing" secondItem="Efu-db-cFC" secondAttribute="trailing" constant="-178" id="rU3-Xm-bhh"/>
                             <constraint firstItem="zze-b9-suX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wEZ-xb-XtH"/>
@@ -97,13 +104,14 @@
                         <outlet property="petImage" destination="cBj-Jz-TcO" id="LI7-01-XpT"/>
                         <outlet property="rainyBackground" destination="7MR-hm-UBS" id="hR2-c2-Xem"/>
                         <outlet property="sixtyHealthBar" destination="vFD-dL-rCo" id="ves-Rp-zNL"/>
+                        <outlet property="snowBackground" destination="PNG-8L-I5R" id="bvb-5F-fAq"/>
                         <outlet property="twentyHealthBar" destination="mg3-FA-TaL" id="FiP-Dn-jrD"/>
                         <outlet property="zeroHealthBar" destination="iMz-11-Kct" id="can-3M-uhu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1061.5999999999999" y="-30.134932533733135"/>
+            <point key="canvasLocation" x="1061.5384615384614" y="-30.568720379146917"/>
         </scene>
         <!--Game-->
         <scene sceneID="M36-Ya-gYF">
@@ -289,7 +297,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lfT-1j-Bkx">
-                                <rect key="frame" x="16" y="89" width="358" height="410"/>
+                                <rect key="frame" x="16" y="88.999999999999972" width="358" height="410.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5DT-dV-Eyc">
                                     <size key="itemSize" width="150" height="132"/>
@@ -347,7 +355,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dx5-5x-j28">
-                                <rect key="frame" x="196" y="615" width="44" height="29"/>
+                                <rect key="frame" x="196" y="615.33333333333337" width="44" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -425,6 +433,7 @@
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="rain background" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="snow background" width="341.33334350585938" height="341.33334350585938"/>
         <image name="storefront" catalog="system" width="128" height="111"/>
         <image name="weather background" width="720" height="1280"/>
         <systemColor name="systemBackgroundColor">

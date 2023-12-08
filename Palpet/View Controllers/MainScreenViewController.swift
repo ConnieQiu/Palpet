@@ -20,6 +20,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     @IBOutlet weak var twentyHealthBar: UIImageView!
     @IBOutlet weak var zeroHealthBar: UIImageView!
     @IBOutlet weak var petImage: UIImageView!
+    @IBOutlet weak var snowBackground: UIImageView!
     
     var firstLoad = true
     
@@ -105,6 +106,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         clearBackground.isHidden = UserDefaults.standard.bool(forKey: "clearBackground")
         cloudyBackground.isHidden = UserDefaults.standard.bool(forKey: "cloudyBackground")
         rainyBackground.isHidden = UserDefaults.standard.bool(forKey: "rainyBackground")
+        snowBackground.isHidden = UserDefaults.standard.bool(forKey: "snowBackground")
         
     }
     
@@ -171,24 +173,40 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
             clearBackground.isHidden = true
             cloudyBackground.isHidden = false
             rainyBackground.isHidden = true
+            snowBackground.isHidden = true
             UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
             UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
             UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
+            UserDefaults.standard.set(snowBackground.isHidden, forKey: "snowBackground")
             
         }else if weatherType == "Clear" {
             clearBackground.isHidden = false
             cloudyBackground.isHidden = true
             rainyBackground.isHidden = true
+            snowBackground.isHidden = true
             UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
             UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
             UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
+            UserDefaults.standard.set(snowBackground.isHidden, forKey: "snowBackground")
         }else if weatherType == "Rain"{
             clearBackground.isHidden = true
             cloudyBackground.isHidden = true
+            snowBackground.isHidden = true
             rainyBackground.isHidden = false
+            
             UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
             UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
             UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
+            UserDefaults.standard.set(snowBackground.isHidden, forKey: "snowBackground")
+        }else if weatherType == "Snow"{
+            clearBackground.isHidden = true
+            cloudyBackground.isHidden = true
+            snowBackground.isHidden = false
+            rainyBackground.isHidden = true
+            UserDefaults.standard.set(clearBackground.isHidden, forKey: "clearBackground")
+            UserDefaults.standard.set(cloudyBackground.isHidden, forKey: "cloudyBackground")
+            UserDefaults.standard.set(rainyBackground.isHidden, forKey: "rainyBackground")
+            UserDefaults.standard.set(snowBackground.isHidden, forKey: "snowBackground")
         }
         
     }
