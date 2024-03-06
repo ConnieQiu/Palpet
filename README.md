@@ -2,7 +2,7 @@ What is PalPet?
 
 Take care of your own virtual pet! Make sure to keep it alive by feeding it some fruit from the Shop. If you need more money to buy fruit, have some fun and play a game!
 
-All pictures are from the Simulator in Xcode on an iPhone 15 on iOS 17.0.
+All pictures are from the Simulator in Xcode on an iPhone 15.
 
 Home Page:
 
