@@ -61,8 +61,6 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
         saveDataTimer()
         saveData()
         updateHunger()
-            
-        
 
     }
     
@@ -231,7 +229,7 @@ class MainScreenViewController: UIViewController, WeatherViewControllerDelegate,
     // MARK: - Pet Methods
 
     func startTimer(){
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true){
+        Timer.scheduledTimer(withTimeInterval: 15, repeats: true){
             timer in
             if Pet.shared.hunger != 0{
                 Pet.shared.hunger -= 20
